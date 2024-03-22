@@ -28,7 +28,7 @@ export default function ToDo() {
                 First Task
               </Typography>
               <Typography variant="h7" sx={{ textAlign: "left" }}>
-               Yeah ,More Details for Task 1
+               Yeah , More Details for Task 1
               </Typography>
             </Grid>
 
