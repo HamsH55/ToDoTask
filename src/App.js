@@ -14,7 +14,12 @@ const theme = createTheme({
     "Alexandria"
    ]
   },
+  // palette:{
+  //   primary:{}
+
+  // }
 });
+
 
 // define an Array
 const initialTodos =[
@@ -38,6 +43,8 @@ const initialTodos =[
   },
 ]
 function App() {
+  const title = "TO DO List ";
+
   const [todos,setTodos] = useState(initialTodos);
   return (
     <ThemeProvider theme={theme}>
@@ -52,7 +59,7 @@ function App() {
     }}>
     
    <TodosContext.Provider value={{todos:todos ,setTodos:setTodos}}>
-   <ToDOList />
+   <ToDOList title = {title} />
    </TodosContext.Provider>
    
     </div>

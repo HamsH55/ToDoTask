@@ -11,8 +11,8 @@
 box-shadow:0px 7px 7px rgba(0,0,0,0.4)
 }
 .toDoCard:hover{
-  padding-bottom:20px;
-  padding-top: 20px;
+  /* padding-bottom:20px;
+  padding-top: 20px; */
   box-shadow:0px 7px 7px rgba(0,0,0,0.4)
 }
 

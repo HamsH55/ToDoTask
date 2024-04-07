@@ -21,9 +21,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 
 //const open= false;
 
-export default function ToDo({ todo, hanleCheck }) {
+export default function ToDo({ todo , showDelete}) {
   const { todos, setTodos } = useContext(TodosContext);
-  const [showDeleteDialog, setShowDeleteDialog] = useState(false);
+ // const [showDeleteDialog, setShowDeleteDialog] = useState(false);
   const [showUpdateDialog, setShowUpdateDialog] = useState(false);
   const [updatedTodo, setUpdatedTodo] = useState({
     title: todo.title,
@@ -48,16 +48,17 @@ export default function ToDo({ todo, hanleCheck }) {
       }
       return t;
     });
-    setTodos(updatedTodos); 
+    setTodos(updatedTodos);
     localStorage.setItem("todos", JSON.stringify(updatedTodos));
   }
 
   function handleDeleteClick() {
-    setShowDeleteDialog(true);
+    showDelete(todo);
+   // setShowDeleteDialog(true);
   }
 
   function handleDeleteDialogClose() {
-    setShowDeleteDialog(false);
+   // setShowDeleteDialog(false);
   }
 
   function handleDeleteConfirm() {
@@ -70,7 +71,6 @@ export default function ToDo({ todo, hanleCheck }) {
 
   function handleUpdateDialogClose() {
     setShowUpdateDialog(false);
-    
   }
 
   function handleUpdateConfirm() {
@@ -105,30 +105,7 @@ export default function ToDo({ todo, hanleCheck }) {
 
   return (
     <>
-      {/* Delete Dialog */}
-      <Dialog
-        //style={{direction:"rtl"}}
-        open={showDeleteDialog}
-        onClose={handleDeleteDialogClose}
-        aria-labelledby="alert-dialog-title"
-        aria-describedby="alert-dialog-description"
-      >
-        <DialogTitle id="alert-dialog-title">
-          {"Are you sure you want to delete ?"}
-        </DialogTitle>
-        <DialogContent>
-          <DialogContentText id="alert-dialog-description">
-            You cannot cancel the deletion after it is complete
-          </DialogContentText>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleDeleteDialogClose}>Close</Button>
-          <Button onClick={handleDeleteConfirm} autoFocus>
-            Yes,I want to Delete
-          </Button>
-        </DialogActions>
-      </Dialog>
-      {/* End Delete Dialog */}
+    
 
       {/* Update Dialog */}
       <Dialog
@@ -189,7 +166,13 @@ export default function ToDo({ todo, hanleCheck }) {
         <CardContent>
           <Grid container spacing={2}>
             <Grid item xs={8}>
-              <Typography variant="h5" sx={{ textAlign: "left" }}>
+              <Typography
+                variant="h5"
+                sx={{
+                  textAlign: "left",
+                  textDecoration: todo.isCompleted ? "line-through" : "none",
+                }}
+              >
                 {todo.title}
               </Typography>
               <Typography variant="h7" sx={{ textAlign: "left" }}>
