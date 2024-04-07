@@ -76,7 +76,7 @@ export default function ToDOList() {
     console.log("calling useEffect");
     // To convert form String to Array or object
     const storageTodos = JSON.parse(localStorage.getItem("todos")) ?? [];
-    setTodos(storageTodos);
+    setTodos(storageTodos);///
   });
 
   function changeDisplayedType(e) {
